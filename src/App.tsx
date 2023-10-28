@@ -27,7 +27,15 @@ function App() {
         <>
           <h1>Your Score: {score}</h1>
           <div className="card">
-            <button onClick={() => setQuizIndex(0)}>Try Again</button>
+            <button
+              onClick={() => {
+                setQuizIndex(0);
+                setScore(0);
+                setSelectedAnswer("");
+              }}
+            >
+              Try Again
+            </button>
           </div>
         </>
       ) : (
@@ -55,7 +63,13 @@ function App() {
                 </label>
               ))}
               <p>
-                <button type="submit">submit</button>
+                {selectedAnswer ? (
+                  <button type="submit">submit</button>
+                ) : (
+                  <button type="submit" disabled>
+                    submit
+                  </button>
+                )}
               </p>
             </div>
           </form>
